@@ -1,0 +1,20 @@
+.app-shell {
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+.app-message {
+  max-width: 42rem;
+  margin: 12vh auto;
+  text-align: center;
+}
+
+.app-message h1 {
+  margin: 0;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+}
+
+.app-message p {
+  color: #4b5563;
+  line-height: 1.6;
+}
