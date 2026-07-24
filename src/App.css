@@ -1,20 +1,145 @@
 .app-shell {
-  min-height: 100vh;
-  padding: 2rem;
+  width: min(100% - 2rem, 70rem);
+  margin: 0 auto;
+  padding: 2rem 0 4rem;
 }
 
-.app-message {
-  max-width: 42rem;
-  margin: 12vh auto;
-  text-align: center;
+.playground-header,
+.filter-panel,
+.cart-heading,
+.cart-row,
+.product-row,
+.quantity-controls,
+.cart-total {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
-.app-message h1 {
+.playground-header {
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+}
+
+.playground-header h1,
+h2 {
   margin: 0;
-  font-size: clamp(2rem, 5vw, 3.5rem);
 }
 
-.app-message p {
+.playground-header p:not(.eyebrow) {
+  margin-bottom: 0;
   color: #4b5563;
-  line-height: 1.6;
+}
+
+.eyebrow {
+  margin: 0 0 0.35rem;
+  color: #6b7280;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.filter-panel {
+  flex-wrap: wrap;
+  align-items: end;
+  margin-bottom: 2rem;
+  padding: 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+}
+
+label {
+  display: grid;
+  gap: 0.35rem;
+  color: #374151;
+  font-size: 0.9rem;
+}
+
+input,
+select,
+button {
+  border: 1px solid #9ca3af;
+  border-radius: 0.35rem;
+  padding: 0.5rem 0.65rem;
+  background: #fff;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.product-list {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.product-row,
+.cart-row {
+  justify-content: space-between;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.product-row div,
+.cart-row div:first-child {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.product-row span,
+.cart-row span {
+  color: #6b7280;
+  font-size: 0.9rem;
+}
+
+.cart-panel {
+  margin-top: 2rem;
+  padding: 1.25rem;
+  border: 2px solid #374151;
+  border-radius: 0.5rem;
+}
+
+.cart-heading {
+  justify-content: space-between;
+}
+
+.quantity-controls {
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.cart-total {
+  justify-content: space-between;
+  margin: 1.25rem 0;
+}
+
+@media (max-width: 40rem) {
+  .app-shell {
+    width: min(100% - 1rem, 70rem);
+    padding-top: 1rem;
+  }
+
+  .playground-header,
+  .product-row,
+  .cart-row {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .product-row button {
+    align-self: start;
+  }
+
+  .quantity-controls {
+    justify-content: flex-start;
+  }
 }
