@@ -7,7 +7,7 @@ const formatCurrency = (amount: number) => new Intl.NumberFormat('en-PH', { styl
 export function ProductCard({ product }: { product: Product }) {
   const { dispatch } = useCart();
   return (
-    <article className={styles.card}>
+    <article className={styles.card} onClick={() => dispatch({ type: 'SET_SELECTED_PRODUCT', payload: product })}>
       <div className={styles.imageWrap}>
         <img className={styles.image} src={product.image} alt="" />
         {!product.inStock && <span className={styles.soldOut}>Sold out</span>}
@@ -17,7 +17,7 @@ export function ProductCard({ product }: { product: Product }) {
         <h3>{product.name}</h3>
         <div className={styles.footer}>
           <strong>{formatCurrency(product.price)}</strong>
-          <button type="button" disabled={!product.inStock} onClick={() => dispatch({ type: 'ADD_TO_CART', payload: product })}>{product.inStock ? 'Add' : 'Unavailable'}</button>
+          <button type="button" disabled={!product.inStock} onClick={(e) => { e.stopPropagation(); dispatch({ type: 'ADD_TO_CART', payload: product }); }}>{product.inStock ? 'Add' : 'Unavailable'}</button>
         </div>
       </div>
     </article>

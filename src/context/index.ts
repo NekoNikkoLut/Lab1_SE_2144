@@ -14,6 +14,7 @@ export const initialState: State = {
     sortBy: 'default',
   },
   isCartOpen: false,
+  selectedProduct: null,
 };
 
 export function cartReducer(state: State, action: CartAction): State {
@@ -65,6 +66,9 @@ export function cartReducer(state: State, action: CartAction): State {
 
     case 'TOGGLE_CART':
       return { ...state, isCartOpen: action.payload ?? !state.isCartOpen };
+
+    case 'SET_SELECTED_PRODUCT':
+      return { ...state, selectedProduct: action.payload };
 
     default:
       return state;

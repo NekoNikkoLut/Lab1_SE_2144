@@ -2,11 +2,22 @@ import type { Product } from '../types';
 
 export const products: Product[] = [
   {
-    id: 'keyboard-01',
-    name: 'Keychron K2 Wireless Keyboard',
-    category: 'Keyboard',
-    price: 89.99,
-    image: 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=800&q=80',
+    id: 'ps4-01',
+    name: 'PlayStation 4 Console',
+    category: 'Gaming',
+    price: 4800.00,
+    image: '/images/PS4.jpg',
+    description: 'Pre-loved unit in great working condition.\nComes with 1 free game disc of your choice.',
+    inStock: true,
+  },
+  {
+    id: 'instax-01',
+    name: 'INSTAX Mini 40',
+    category: 'Cameras',
+    price: 4999.00,
+    image: '/images/INSTAX-Mini-40.jpg',
+    images: ['/images/INSTAX-Mini-40(2).jpg'],
+    description: 'Used only once.\nIn pristine condition — good as brand new.',
     inStock: true,
   },
   {

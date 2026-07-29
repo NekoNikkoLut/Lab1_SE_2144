@@ -4,6 +4,8 @@ export interface Product {
   category: string;
   price: number;
   image: string;
+  images?: string[];
+  description?: string;
   inStock: boolean;
 }
 
@@ -25,6 +27,7 @@ export interface State {
   cart: CartItem[];
   filters: Filters;
   isCartOpen: boolean;
+  selectedProduct: Product | null;
 }
 
 export type CartAction =
@@ -36,4 +39,5 @@ export type CartAction =
   | { type: 'SET_CATEGORY'; payload: string }
   | { type: 'SET_MAX_PRICE'; payload: number }
   | { type: 'SET_SORT'; payload: SortBy }
-  | { type: 'TOGGLE_CART'; payload?: boolean };
+  | { type: 'TOGGLE_CART'; payload?: boolean }
+  | { type: 'SET_SELECTED_PRODUCT'; payload: Product | null };
