@@ -1,0 +1,80 @@
+.item {
+    display: grid;
+    grid-template-columns: 5.25rem 1fr;
+    gap: 0.9rem;
+    padding: 1.2rem 0;
+    border-bottom: 1px solid #edf1ef;
+}
+
+.item img {
+    width: 5.25rem;
+    height: 4.3rem;
+    border-radius: 0.5rem;
+    object-fit: cover;
+    background: #edf1ef;
+}
+
+.details p {
+    margin: 0 0 0.2rem;
+    color: #7b8884;
+    font-size: 0.68rem;
+    font-weight: 750;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.details h3 {
+    margin: 0;
+    color: #283330;
+    font-size: 0.88rem;
+    line-height: 1.25;
+}
+
+.details strong {
+    display: block;
+    margin-top: 0.35rem;
+    color: #17211f;
+    font-size: 0.85rem;
+}
+
+.bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin-top: 0.65rem;
+}
+
+.quantity {
+    display: inline-flex;
+    align-items: center;
+    overflow: hidden;
+    border: 1px solid #dce5e0;
+    border-radius: 0.4rem;
+}
+
+.quantity button {
+    width: 1.6rem;
+    height: 1.55rem;
+    border: 0;
+    background: #fff;
+    color: #34413d;
+    cursor: pointer;
+}
+
+.quantity span {
+    min-width: 1.5rem;
+    color: #34413d;
+    font-size: 0.78rem;
+    text-align: center;
+}
+
+.remove {
+    border: 0;
+    background: transparent;
+    color: #7b8884;
+    font: inherit;
+    font-size: 0.72rem;
+    text-decoration: underline;
+    cursor: pointer;
+}

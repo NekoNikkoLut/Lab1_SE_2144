@@ -1,0 +1,73 @@
+.filters {
+    display: grid;
+    grid-template-columns: 1.5fr repeat(2, 0.8fr) 1fr;
+    gap: 0.9rem;
+    margin-bottom: 2.25rem;
+    padding: 1rem;
+    border: 1px solid #e1e9e5;
+    border-radius: 0.9rem;
+    background: #fff;
+    box-shadow: 0 0.4rem 1.5rem rgb(22 45 36 / 4%);
+}
+
+.filters label,
+.selectField {
+    display: grid;
+    gap: 0.4rem;
+}
+
+.label {
+    color: #65736f;
+    font-size: 0.74rem;
+    font-weight: 750;
+}
+
+.filters input:not([type="range"]),
+.filters select {
+    width: 100%;
+    min-width: 0;
+    border: 1px solid #cbd6d2;
+    border-radius: 1rem;
+    padding: 0.8rem 0.9rem;
+    background: #f8fbf8;
+    color: #26312f;
+    font: inherit;
+    font-size: 0.95rem;
+    outline-color: #6f958b;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.filters select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    padding-right: 2.5rem;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'%3E%3Cpath fill='%2326312f' d='M0 0l5 6 5-6z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 0.75rem 0.45rem;
+}
+
+.filters input:not([type="range"]):focus-visible,
+.filters select:focus-visible {
+    border-color: #7fa18f;
+    box-shadow: 0 0 0 3px rgba(111, 149, 139, 0.15);
+}
+
+.filters input[type="range"] {
+    width: 100%;
+    accent-color: #476a63;
+}
+
+@media (max-width: 50rem) {
+    .filters {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 32rem) {
+    .filters {
+        grid-template-columns: 1fr;
+    }
+}
