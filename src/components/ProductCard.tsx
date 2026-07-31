@@ -13,7 +13,7 @@ export function ProductCard({ product }: { product: Product }) {
       <div className={styles.imageWrap}>
         <img className={styles.image} src={product.image} alt="" loading="lazy" />
         <span className={`${styles.status} ${product.inStock ? '' : styles.soldOut}`}>
-          {product.inStock ? 'Good' : 'Sold out'}
+          {product.inStock ? 'Available' : 'Sold out'}
         </span>
       </div>
       <div className={styles.details}>
