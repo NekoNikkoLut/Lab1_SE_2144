@@ -1,13 +1,32 @@
+:root {
+  --bg: #191c18;
+  --surface: #1f2320;
+  --surface-2: #262b26;
+  --ink: #e9e6dc;
+  --steel: #969c92;
+  --line: #33382f;
+  --amber: #f2a51a;
+  --amber-deep: #d38a0f;
+  --muted: #6e726a;
+}
+
 * {
   box-sizing: border-box;
+}
+
+html {
+  scrollbar-color: var(--line) transparent;
 }
 
 body {
   margin: 0;
   min-width: 320px;
-  background: #f8fafc;
-  color: #17211f;
-  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background-color: var(--bg);
+  background-image: radial-gradient(rgb(255 255 255 / 3%) 1px, transparent 1px);
+  background-size: 22px 22px;
+  color: var(--ink);
+  font-family: "IBM Plex Sans", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
 
 button,
@@ -20,6 +39,22 @@ button:focus-visible,
 input:focus-visible,
 select:focus-visible,
 a:focus-visible {
-  outline: 3px solid #a5c5ba;
+  outline: 2px solid var(--amber);
   outline-offset: 2px;
+}
+
+::selection {
+  background: var(--amber);
+  color: var(--bg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

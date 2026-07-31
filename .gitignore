@@ -25,3 +25,5 @@ yarn-error.log*
 /.agents
 /.vscode
 OBJECTIVE.md
+AGENTS.md
+skills-lock.json

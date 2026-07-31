@@ -14,6 +14,8 @@ export const initialState: State = {
     sortBy: 'default',
   },
   isCartOpen: false,
+  selectedProduct: null,
+  toasts: [],
 };
 
 export function cartReducer(state: State, action: CartAction): State {
@@ -48,6 +50,26 @@ export function cartReducer(state: State, action: CartAction): State {
     case 'CLEAR_CART':
       return { ...state, cart: [] };
 
+    case 'CHECKOUT': {
+      const soldOutIds = new Set(state.cart.map((item) => item.id));
+
+      return {
+        ...state,
+        cart: [],
+        products: soldOutIds.size
+          ? state.products.map((product) =>
+            soldOutIds.has(product.id) ? { ...product, inStock: false } : product,
+          )
+          : state.products,
+      };
+    }
+
+    case 'ADD_TOAST':
+      return { ...state, toasts: [...state.toasts, action.payload] };
+
+    case 'REMOVE_TOAST':
+      return { ...state, toasts: state.toasts.filter((toast) => toast.id !== action.payload) };
+
     case 'SET_SEARCH_QUERY':
       return { ...state, filters: { ...state.filters, searchQuery: action.payload } };
 
@@ -65,6 +87,9 @@ export function cartReducer(state: State, action: CartAction): State {
 
     case 'TOGGLE_CART':
       return { ...state, isCartOpen: action.payload ?? !state.isCartOpen };
+
+    case 'SET_SELECTED_PRODUCT':
+      return { ...state, selectedProduct: action.payload };
 
     default:
       return state;
@@ -103,6 +128,17 @@ export const getCartSubtotal = (state: State) =>
 
 export const getCartGrandTotal = getCartSubtotal;
 
+let toastCounter = 0;
+
+function nextToastId(): string {
+  if (typeof crypto !== 'undefined' && 'randomUUID' in crypto) {
+    return crypto.randomUUID();
+  }
+
+  toastCounter += 1;
+  return `toast-${Date.now()}-${toastCounter}`;
+}
+
 interface CartContextValue {
   state: State;
   dispatch: Dispatch<CartAction>;
@@ -124,4 +160,12 @@ export function useCart() {
   }
 
   return context;
+}
+
+export function useToast() {
+  const { dispatch } = useCart();
+
+  return (message: string) => {
+    dispatch({ type: 'ADD_TOAST', payload: { id: nextToastId(), message } });
+  };
 }

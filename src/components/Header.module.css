@@ -1,91 +1,152 @@
 .header {
     position: sticky;
     top: 0;
-    z-index: 10;
-    border-bottom: 1px solid #e6ece9;
-    background: rgb(255 255 255 / 88%);
+    z-index: 40;
+    border-bottom: 1px solid var(--line);
+    background: rgb(25 28 24 / 82%);
     backdrop-filter: blur(14px);
 }
 
 .inner {
-    display: flex;
-    width: min(100% - 2.5rem, 76rem);
-    min-height: 4.6rem;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    width: min(100% - 2.5rem, 84rem);
+    min-height: 4.2rem;
     margin: 0 auto;
     align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
+    gap: 1.5rem;
 }
 
 .brand {
     display: inline-flex;
     align-items: center;
-    gap: 0.55rem;
-    color: #17211f;
-    font-size: 1.08rem;
-    font-weight: 800;
-    letter-spacing: -0.045em;
+    gap: 0.6rem;
+    color: var(--ink);
+    font-family: "Chakra Petch", sans-serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
     text-decoration: none;
+    white-space: nowrap;
 }
 
 .mark {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    color: var(--amber);
+}
+
+.searchWrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.searchIcon {
+    position: absolute;
+    left: 0.9rem;
+    color: var(--steel);
+    pointer-events: none;
+}
+
+.search {
+    width: 100%;
+    min-width: 0;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 0.68rem 2.5rem 0.68rem 2.6rem;
+    background: var(--surface);
+    color: var(--ink);
+    font-size: 0.95rem;
+    transition: border-color 160ms ease, background-color 160ms ease;
+}
+
+.search::placeholder {
+    color: var(--steel);
+}
+
+.search:hover {
+    border-color: #4a514a;
+}
+
+.search:focus-visible {
+    outline: none;
+    border-color: var(--amber);
+    background: var(--surface-2);
+}
+
+.search::-webkit-search-cancel-button {
+    display: none;
+}
+
+.searchClear {
+    position: absolute;
+    right: 0.5rem;
+    display: grid;
     width: 1.8rem;
     height: 1.8rem;
-    border-radius: 0.5rem;
-    background: #17211f;
-    color: #fff;
+    place-items: center;
+    border: 0;
+    border-radius: 3px;
+    background: transparent;
+    color: var(--steel);
+    cursor: pointer;
+    transition: color 150ms ease, background-color 150ms ease;
 }
 
-.nav {
-    display: flex;
-    gap: 1.5rem;
-    margin-left: auto;
-}
-
-.nav a {
-    color: #66736f;
-    font-size: 0.92rem;
-    font-weight: 650;
-    text-decoration: none;
-}
-
-.nav a:hover {
-    color: #17211f;
+.searchClear:hover {
+    background: var(--surface-2);
+    color: var(--ink);
 }
 
 .cartButton {
+    position: relative;
     display: inline-flex;
     align-items: center;
-    gap: 0.45rem;
-    border: 0;
-    border-radius: 0.6rem;
-    padding: 0.6rem 0.75rem;
-    background: #eaf1ee;
-    color: #17211f;
-    font-weight: 750;
+    justify-content: center;
+    width: 2.6rem;
+    height: 2.6rem;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    background: var(--surface);
+    color: var(--ink);
     cursor: pointer;
+    transition: border-color 150ms ease, color 150ms ease, background-color 150ms ease;
+}
+
+.cartButton:hover {
+    border-color: var(--amber);
+    background: var(--surface-2);
+    color: var(--amber);
 }
 
 .badge {
+    position: absolute;
+    top: -0.45rem;
+    right: -0.45rem;
     display: grid;
-    min-width: 1.2rem;
-    height: 1.2rem;
+    min-width: 1.15rem;
+    height: 1.15rem;
     place-items: center;
     border-radius: 999px;
-    background: #476a63;
-    color: #fff;
+    padding: 0 0.25rem;
+    background: var(--amber);
+    color: var(--bg);
+    font-family: "IBM Plex Mono", monospace;
     font-size: 0.7rem;
+    font-weight: 600;
 }
 
-@media (max-width: 42rem) {
+@media (max-width: 40rem) {
     .inner {
-        width: min(100% - 1.5rem, 76rem);
+        grid-template-columns: 1fr auto;
+        gap: 0.75rem;
+        padding: 0.75rem 0 0.85rem;
     }
 
-    .nav {
-        display: none;
+    .searchWrap {
+        grid-column: 1 / -1;
+        grid-row: 2;
     }
 }

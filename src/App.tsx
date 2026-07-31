@@ -1,23 +1,36 @@
-import { CartProvider } from './context';
-import { CartDrawer, Filters, Header, ProductGrid } from './components';
+import { CartProvider, useCart } from './context';
+import { CartDrawer, Filters, Header, ProductDetail, ProductGrid, ToastHost } from './components';
 import styles from './App.module.css';
+
+function AppContent() {
+  const { state } = useCart();
+  return (
+    <div className={styles.app} id="top">
+      <Header />
+      <main className={styles.content}>
+        <div className={styles.intro}>
+          <p className={styles.eyebrow}>Buy · Sell · Upgrade</p>
+          <h1>Pre-loved tech, priced to move.</h1>
+          <p>Checked-over gear for work, play, and everything in between.</p>
+        </div>
+        <div className={styles.shop}>
+          <Filters />
+          <div className={styles.grid}>
+            <ProductGrid />
+          </div>
+        </div>
+      </main>
+      <CartDrawer />
+      <ToastHost />
+      {state.selectedProduct && <ProductDetail product={state.selectedProduct} />}
+    </div>
+  );
+}
 
 function App() {
   return (
     <CartProvider>
-      <div className={styles.app}>
-        <Header />
-        <main className={styles.content}>
-          <div className={styles.intro}>
-            <p className={styles.eyebrow}>Thoughtful tech, everyday ease</p>
-            <h1>Upgrade your everyday setup.</h1>
-            <p>Explore reliable essentials for work, play, and everything in between.</p>
-          </div>
-          <Filters />
-          <ProductGrid />
-        </main>
-        <CartDrawer />
-      </div>
+      <AppContent />
     </CartProvider>
   );
 }
