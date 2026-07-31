@@ -1,0 +1,96 @@
+.dropdownContainer {
+  position: relative;
+  width: 100%;
+}
+
+.dropdownButton {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  min-width: 0;
+  padding: 0.68rem 0.9rem;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: var(--bg);
+  color: var(--ink);
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.9rem;
+  text-align: left;
+  transition: border-color 160ms ease, background-color 160ms ease;
+}
+
+.dropdownButton:hover,
+.dropdownButton[aria-expanded='true'] {
+  border-color: var(--amber);
+  background: var(--surface-2);
+}
+
+.dropdownButton:focus-visible {
+  outline: none;
+  border-color: var(--amber);
+}
+
+.arrow {
+  width: 0;
+  height: 0;
+  margin-left: 0.75rem;
+  border-top: 0.4rem solid var(--steel);
+  border-right: 0.35rem solid transparent;
+  border-left: 0.35rem solid transparent;
+  transition: transform 200ms ease;
+}
+
+.dropdownButton[aria-expanded='true'] .arrow {
+  transform: rotate(180deg);
+}
+
+.dropdownMenu {
+  position: absolute;
+  z-index: 30;
+  top: calc(100% + 0.4rem);
+  left: 0;
+  width: 100%;
+  max-height: 16rem;
+  overflow-y: auto;
+  padding: 0.35rem;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: var(--surface-2);
+  box-shadow: 0 0.85rem 2rem rgb(0 0 0 / 45%);
+}
+
+.dropdownOption {
+  display: block;
+  width: 100%;
+  padding: 0.6rem 0.7rem;
+  border: 0;
+  border-radius: 3px;
+  background: transparent;
+  color: var(--steel);
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.9rem;
+  text-align: left;
+  transition: background-color 140ms ease, color 140ms ease;
+}
+
+.dropdownOption:hover,
+.dropdownOption:focus-visible {
+  outline: none;
+  background: var(--surface);
+  color: var(--ink);
+}
+
+.dropdownOption.active {
+  background: var(--amber);
+  color: var(--bg);
+  font-weight: 600;
+}
+
+.dropdownOption.active:hover,
+.dropdownOption.active:focus-visible {
+  background: var(--amber-deep);
+  color: var(--bg);
+}
