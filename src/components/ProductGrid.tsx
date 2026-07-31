@@ -8,8 +8,19 @@ export function ProductGrid() {
 
   return (
     <section id="shop" aria-labelledby="catalog-title">
-      <div className={styles.heading}><h2 id="catalog-title">Browse the collection</h2><span>{products.length} products</span></div>
-      {products.length ? <div className={styles.grid}>{products.map((product) => <ProductCard key={product.id} product={product} />)}</div> : <p className={styles.empty}>No products match those filters. Try widening your search.</p>}
+      <div className={styles.heading}>
+        <h2 id="catalog-title">Catalog</h2>
+        <span className={styles.count}>{products.length} {products.length === 1 ? 'item' : 'items'}</span>
+      </div>
+      {products.length ? (
+        <div className={styles.grid}>
+          {products.map((product) => (
+            <ProductCard key={product.id} product={product} />
+          ))}
+        </div>
+      ) : (
+        <p className={styles.empty}>No gear matches those filters. Widen the price or pick another category.</p>
+      )}
     </section>
   );
 }

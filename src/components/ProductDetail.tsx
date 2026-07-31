@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useCart } from '../context';
+import { useCart, useToast } from '../context';
 import type { Product } from '../types';
 import styles from './ProductDetail.module.css';
 
@@ -7,6 +7,7 @@ const formatCurrency = (amount: number) => new Intl.NumberFormat('en-PH', { styl
 
 export function ProductDetail({ product }: { product: Product }) {
   const { dispatch } = useCart();
+  const notify = useToast();
   const allImages = [product.image, ...(product.images ?? [])];
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -52,9 +53,10 @@ export function ProductDetail({ product }: { product: Product }) {
               onClick={() => {
                 dispatch({ type: 'ADD_TO_CART', payload: product });
                 dispatch({ type: 'SET_SELECTED_PRODUCT', payload: null });
+                notify(`${product.name} added to cart!`);
               }}
             >
-              {product.inStock ? 'Add to Cart' : 'Unavailable'}
+              {product.inStock ? 'Add to cart' : 'Unavailable'}
             </button>
           </div>
         </div>

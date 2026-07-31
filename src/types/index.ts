@@ -22,12 +22,18 @@ export interface Filters {
   sortBy: SortBy;
 }
 
+export interface Toast {
+  id: string;
+  message: string;
+}
+
 export interface State {
   products: Product[];
   cart: CartItem[];
   filters: Filters;
   isCartOpen: boolean;
   selectedProduct: Product | null;
+  toasts: Toast[];
 }
 
 export type CartAction =
@@ -35,6 +41,9 @@ export type CartAction =
   | { type: 'REMOVE_FROM_CART'; payload: string }
   | { type: 'UPDATE_QUANTITY'; payload: { id: string; quantity: number } }
   | { type: 'CLEAR_CART' }
+  | { type: 'CHECKOUT' }
+  | { type: 'ADD_TOAST'; payload: Toast }
+  | { type: 'REMOVE_TOAST'; payload: string }
   | { type: 'SET_SEARCH_QUERY'; payload: string }
   | { type: 'SET_CATEGORY'; payload: string }
   | { type: 'SET_MAX_PRICE'; payload: number }
